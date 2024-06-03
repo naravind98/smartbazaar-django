@@ -80,7 +80,7 @@ def add_cart(request, product_id):
         # for item in product_variation:
         #     cart_item.variations.add(item)
         cart_item.variations.add(*product_variation)         # Instead of looping, we can use *product_variation. This will add all the variation objects in one go.
-        cart_item.save()
+        cart_item.save()                                     # instead of saving the cart_item at multiple places, I am giving the save() at one place and that too at the end of the function
         # print(cart_item.product, cart_item.variations)
 
     return redirect('cart')
