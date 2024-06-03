@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'category',                               # All the apps that we create (using the command "python manage.py startapp <app_name>") should be registered here in "INSTALLED_APPS"
     'accounts',
     'store',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'category.context_processor.menu_links'                      # So by adding this here, we will be able to use this menu links in any templates we want. So that's the reason we use this context processors.
+                'category.context_processors.menu_links',                      # So by adding this here, we will be able to use this menu links in any templates we want. So that's the reason we use this context processors.
+                'carts.context_processors.counter',
             ],
         },
     },
