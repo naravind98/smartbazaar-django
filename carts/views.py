@@ -120,7 +120,7 @@ def cart(request, total_price=0, total_quantity=0, cart_items=None):
         # total_price, total_quantity, cart_items = 0, 0, None
         cart = Cart.objects.get(cart_id=_cart_id(request))  # cart_id is one of the field of Cart model class
         cart_items = CartItem.objects.filter(cart=cart,
-                                             is_available=True)  # 'cart' is one of the field of Cart model class
+                                             is_available=True).order_by('id')  # 'cart' is one of the field of Cart model class
         for cart_item in cart_items:
             total_price += (cart_item.product.price * cart_item.quantity)
             total_quantity += cart_item.quantity
