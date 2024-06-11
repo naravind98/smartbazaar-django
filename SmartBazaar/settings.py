@@ -146,3 +146,21 @@ MEDIA_ROOT = BASE_DIR /"media"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# The below 3-4 line of code is the message-framework in django which will be used to show messages/alert
+# dialogue box in UI
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+
+}
+
+
+# SMTP configuration ----- to send verification-mail for users
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'             The smtp configuration works without this line.
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587                                            # 587 is for gmail. for other mail system like yahoo etc the port will be different
+EMAIL_HOST_USER = 'nairproject100@gmail.com'                # The gmail account from which you need to send the verification mail
+EMAIL_HOST_PASSWORD = 'rmgf ufoh bofw shop'                 # The App Password of the above gmail account which you had to create in the gmail account
+EMAIL_USE_TLS = True

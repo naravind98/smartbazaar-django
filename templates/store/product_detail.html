@@ -49,7 +49,7 @@
 		<div class="row">
 			<div class="item-option-select">
 				<h6>Select Size</h6>
-				<select name="size" class="form-control">
+				<select name="size" class="form-control" required>
 				<!-- The name="size" will be passed in the url. That is why select tag of form is used. For ex. When I selected color=yellow and size=medium and clicked on "Add to Cart", the url was "http://127.0.0.1:8000/cart/add_cart/2?color=yellow&size=medium"  -->
 					<option value="" disabled selected> Select </option>
 					{% for i in single_product.variation_set.sizes %}

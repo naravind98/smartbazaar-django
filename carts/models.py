@@ -1,5 +1,6 @@
 from django.db import models
 from store.models import Product, Variation
+from accounts.models import Account
 
 
 # Create your models here.
@@ -12,9 +13,10 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):                        # When a product is added to a cart that product becomes cartitem i.e. an an object of class CartItem
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)            # we are assigning user as an attribute bcoz if there are some cart-items in the cart and then a user logs-in then the cartitems should still be present in the cart.
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     variations = models.ManyToManyField(Variation, blank=True)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     quantity = models.IntegerField()
     is_available = models.BooleanField(default=True)
 
@@ -25,3 +27,6 @@ class CartItem(models.Model):                        # When a product is added t
 
     def __unicode__(self):
         return self.product
+
+    # def __str__(self):
+    #     return f"Username:{self.user.username}--{self.variations}--Cart:{self.cart}"
