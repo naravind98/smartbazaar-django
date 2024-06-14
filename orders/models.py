@@ -3,7 +3,6 @@ from accounts.models import Account
 from store.models import Product, Variation
 
 
-
 class Payment(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     payment_id = models.CharField(max_length=100)
@@ -41,10 +40,9 @@ class Order(models.Model):
     tax = models.FloatField()
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
-    is_ordered = models.BooleanField(default=False)
+    is_ordered = models.BooleanField(default=False)               # When the payment for an order is successful then we set this attribute to true, till then this attribute will be false.
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
 
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
