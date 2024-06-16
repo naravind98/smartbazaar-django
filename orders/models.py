@@ -62,7 +62,7 @@ class OrderProduct(models.Model):
     variations = models.ManyToManyField(Variation, blank=True)
     quantity = models.IntegerField()
     product_price = models.FloatField()
-    ordered = models.BooleanField(default=False)
+    ordered = models.BooleanField(default=False)              # if True that means payment is successful else False
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
